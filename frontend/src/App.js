@@ -7,12 +7,12 @@ class App extends Component {
   render() {
     return (
       <center>
-        <p>Ultimo</p>
+        {/* <p>Ultimo</p>
         <LaunchesSlider url='https://zapayapi-prod.herokuapp.com/service/latest' />
 
         <p>Proximo</p>
         <LaunchesSlider url='https://zapayapi-prod.herokuapp.com/service/next' />
-
+ */}
         <p>Anteriores</p>
         <LaunchesSlider url='https://zapayapi-prod.herokuapp.com/service/past?sort=launch_date_utc&order=desc' />
 

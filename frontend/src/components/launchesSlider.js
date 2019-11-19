@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import Card from 'react-bootstrap/Card';
 import Slider from 'react-slick';
+import LauncheCard from './card';
 import '../App.css';
-
-const spacexLogo = 'https://cdn.iconscout.com/icon/free/png-256/spacex-282142.png';
 
 const NextArrow = props => {
   const { className, style, onClick } = props;
@@ -16,13 +14,8 @@ const PrevArrow = props => {
 };
 
 export default class LaunchesSlider extends Component {
-  constructor(props) {
-    super(props);
-    console.log(props);
-  }
-
   state = {
-    contacts: [],
+    launches: [],
     width: 128
   };
 
@@ -30,9 +23,7 @@ export default class LaunchesSlider extends Component {
     fetch(`${this.props.url}`)
       .then(res => res.json())
       .then(data => {
-        console.log(JSON.parse(data));
-        const info = Array.isArray(JSON.parse(data)) ? JSON.parse(data) : [JSON.parse(data)];
-        return this.setState({ contacts: info });
+        return this.setState({ launches: JSON.parse(data) });
       })
       .catch(console.log);
   }
@@ -47,7 +38,7 @@ export default class LaunchesSlider extends Component {
       dots: false,
       accessibility: true,
       infinite: true,
-      speed: 700,
+      speed: 550,
       slidesToShow: 4,
       slidesToScroll: 1,
       initialSlide: 0,
@@ -81,37 +72,10 @@ export default class LaunchesSlider extends Component {
       ]
     };
     return (
-      <div
-        style={{
-          width: '85%'
-        }}
-      >
+      <div style={{ width: '85%' }}>
         <Slider {...settings}>
-          {this.state.contacts.map(contact => (
-            <div
-              key={contact.flight_number}
-              style={{
-                width: this.state.width + 'px'
-              }}
-            >
-              <Card
-                style={{
-                  // width: '400px',
-                  height: '400px'
-                }}
-              >
-                <Card.Body>
-                  <Card.Title>{contact.mission_name}</Card.Title>
-                  <Card.Subtitle className='mb-2 text-muted'>Card Subtitle</Card.Subtitle>
-                  <Card.Img variant='bottom' src={contact.links.mission_patch_small || spacexLogo} />
-                  {/* <Card.Text>
-                    Some quick example text to build on the card title and make up the bulk of the card's content.
-                  </Card.Text> */}
-                  <Card.Link href='#'>Card Link</Card.Link>
-                  <Card.Link href='#'>Another Link</Card.Link>
-                </Card.Body>
-              </Card>
-            </div>
+          {this.state.launches.map(launche => (
+            <LauncheCard key={launche.flight_number} launche={launche}></LauncheCard>
           ))}
         </Slider>
       </div>
