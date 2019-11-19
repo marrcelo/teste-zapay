@@ -32,7 +32,6 @@ export default class LaunchesSlider extends Component {
 
   render() {
     const settings = {
-      // lazyLoad: 'progressive',
       pauseOnFocus: true,
       pauseOnHover: true,
       autoplay: false,
