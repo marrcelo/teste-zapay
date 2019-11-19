@@ -15,15 +15,19 @@ const PrevArrow = props => {
 };
 
 export default class LaunchesSlider extends Component {
-  state = { launches: [] };
+  state = { launches: [], requestFailed: false };
 
   componentDidMount() {
     fetch(`${this.props.url}`)
       .then(res => res.json())
       .then(data => {
-        return this.setState({ launches: JSON.parse(data) });
+        try {
+          return this.setState({ launches: JSON.parse(data), requestFailed: false });
+        } catch (error) {
+          console.error(error);
+        }
       })
-      .catch(console.log);
+      .catch(this.setState({ requestFailed: true }));
   }
 
   componentWillMount() {
@@ -73,14 +77,23 @@ export default class LaunchesSlider extends Component {
         }
       ]
     };
-    return (
-      <div className='slider-width'>
-        <Slider {...settings}>
-          {this.state.launches.map(launche => (
-            <LauncheCard key={launche._id} launche={launche}></LauncheCard>
-          ))}
-        </Slider>
-      </div>
-    );
+    const { requestFailed } = this.state;
+    if (requestFailed) {
+      return (
+        <div>
+          <p>Opss.. Aconteceu algum problema :(</p>
+        </div>
+      );
+    } else {
+      return (
+        <div className='slider-width'>
+          <Slider {...settings}>
+            {this.state.launches.map(launche => (
+              <LauncheCard key={launche._id} launche={launche}></LauncheCard>
+            ))}
+          </Slider>
+        </div>
+      );
+    }
   }
 }

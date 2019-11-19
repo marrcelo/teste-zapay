@@ -6,7 +6,6 @@ import Row from 'react-bootstrap/Row';
 import './App.css';
 import LauncheBigCard from './components/launcheBigCard';
 import LaunchesSlider from './components/launchesSlider';
-
 class App extends Component {
   render() {
     return (

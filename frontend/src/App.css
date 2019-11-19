@@ -2,7 +2,7 @@
 @import 'slick/slick-theme.css';
 
 .navbar-brand-img-size {
-  width: 240px;
+  max-width: 240px;
   height: 30px;
 }
 
@@ -24,20 +24,20 @@
 }
 
 .slider-width {
-  width: 85%;
+  max-width: 85%;
 }
 
 .launcheCard-size {
   height: 420px;
-  width: 279px;
+  max-width: 279px;
 }
 
 .launcheCardBig-size {
   height: 450px;
-  width: 450px;
+  max-width: 450px;
 }
 
 .launcheCardBig-img-size {
   height: 300px;
-  width: 300px;
+  max-width: 300px;
 }
