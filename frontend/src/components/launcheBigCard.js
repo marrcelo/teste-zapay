@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
 import dayjs from 'dayjs';
 import 'dayjs/locale/pt-br';
+import React, { Component } from 'react';
 import Card from 'react-bootstrap/Card';
-import LauncheCardModal from './launcheCardModal';
 import '../App.css';
+import LauncheCardModal from './launcheCardModal';
 
 const spacexLogo = 'https://cdn.iconscout.com/icon/free/png-256/spacex-282142.png';
 
@@ -22,7 +22,7 @@ export default class LauncheBigCard extends Component {
 
   render() {
     return (
-      <Card style={{ height: '450px', width: '450px' }}>
+      <Card className='launcheCardBig-size'>
         <Card.Body>
           <Card.Title>{this.state.launche.mission_name}</Card.Title>
           <Card.Subtitle className='mb-2 text-muted'>
@@ -31,11 +31,11 @@ export default class LauncheBigCard extends Component {
               .format('D MMMM YYYY, HH:mm')}
           </Card.Subtitle>
           <Card.Img
-            style={{ height: '300px', width: '300px' }}
+            className='launcheCardBig-img-size'
             variant='bottom'
             src={(this.state.launche.links && this.state.launche.links.mission_patch_small) || spacexLogo}
           />
-          <div style={{ padding: '10px' }}></div>
+          <div className='padding-10px'></div>
           <LauncheCardModal launche={this.state.launche}></LauncheCardModal>
         </Card.Body>
       </Card>

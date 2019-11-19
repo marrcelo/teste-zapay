@@ -1,8 +1,8 @@
+import dayjs from 'dayjs';
+import 'dayjs/locale/pt-br';
 import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import dayjs from 'dayjs';
-import 'dayjs/locale/pt-br';
 
 const LauncheCardModal = ({ launche }) => {
   const [show, setShow] = useState(false);

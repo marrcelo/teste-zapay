@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import Slider from 'react-slick';
-import LauncheCard from './launcheCard';
-
 import Spinner from 'react-bootstrap/Spinner';
+import Slider from 'react-slick';
 import '../App.css';
+import LauncheCard from './launcheCard';
 
 const NextArrow = props => {
   const { className, style, onClick } = props;
@@ -74,30 +73,9 @@ export default class LaunchesSlider extends Component {
           }
         }
       ]
-      // appendDots: dots => (
-      //   <div
-      //     style={{
-      //       borderRadius: '10px',
-      //       padding: '5px'
-      //     }}
-      //   >
-      //     <ul style={{ margin: '0px' }}> {dots} </ul>
-      //   </div>
-      // ),
-      // customPaging: i => (
-      //   <div
-      //     style={{
-      //       width: '15px',
-      //       color: 'blue',
-      //       border: '1px blue solid'
-      //     }}
-      //   >
-      //     {i + 1}
-      //   </div>
-      // )
     };
     return (
-      <div style={{ width: '85%' }}>
+      <div className='slider-width'>
         <Slider {...settings}>
           {this.state.launches.map(launche => (
             <LauncheCard key={launche._id} launche={launche}></LauncheCard>
