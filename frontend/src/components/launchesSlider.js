@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Spinner from 'react-bootstrap/Spinner';
 import Slider from 'react-slick';
 import '../App.css';
 import LauncheCard from './launcheCard';
@@ -24,10 +23,10 @@ export default class LaunchesSlider extends Component {
         try {
           return this.setState({ launches: JSON.parse(data), requestFailed: false });
         } catch (error) {
-          console.error(error);
+          this.setState({ requestFailed: true });
         }
       })
-      .catch(this.setState({ requestFailed: true }));
+      .catch(console.error);
   }
 
   render() {

@@ -17,10 +17,10 @@ export default class LauncheBigCard extends Component {
         try {
           return this.setState({ launche: JSON.parse(data), requestFailed: false });
         } catch (error) {
-          console.error(error);
+          this.setState({ requestFailed: true });
         }
       })
-      .catch(this.setState({ requestFailed: true }));
+      .catch(console.error);
   }
 
   render() {
