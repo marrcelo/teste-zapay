@@ -30,10 +30,6 @@ export default class LaunchesSlider extends Component {
       .catch(this.setState({ requestFailed: true }));
   }
 
-  componentWillMount() {
-    return <Spinner animation='grow' />;
-  }
-
   render() {
     const settings = {
       pauseOnFocus: true,
