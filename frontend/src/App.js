@@ -13,10 +13,10 @@ class App extends Component {
         <p>Proximo</p>
         <LaunchesSlider url='https://zapayapi-prod.herokuapp.com/service/next' />
  */}
-        <p>Anteriores</p>
+        <h3>Anteriores</h3>
         <LaunchesSlider url='https://zapayapi-prod.herokuapp.com/service/past?sort=launch_date_utc&order=desc' />
 
-        <p>Proximos</p>
+        <h3>Proximos</h3>
         <LaunchesSlider url='https://zapayapi-prod.herokuapp.com/service/upcoming?sort=launch_date_utc&order=asc' />
       </center>
     );
