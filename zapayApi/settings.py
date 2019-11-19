@@ -25,7 +25,8 @@ SECRET_KEY = 'msbw%k86g&kp$o(i(^#d4pl5pi!2mp4ig9j0$v70o4u^%j!v1p'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['zapayapi-prod.herokuapp.com']
+ALLOWED_HOSTS = ['zapayapi-prod.herokuapp.com', 'localhost',
+                 'localhost:8000', '127.0.0.1:8000', '127.0.0.1']
 
 
 # Application definition
