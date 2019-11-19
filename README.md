@@ -8,7 +8,6 @@ Requisitos para utilizar localmente:
 `git`
 `pip`
 `npm`
-`yarn`
 
 Para usar esse projeto clone o repositorio: 
 
@@ -32,6 +31,6 @@ Em outro terminal entre na pasta `teste-zapay/frontend` e instale as dependencia
 
 Execute o frontend utilizando:
 
-`yarn start`
+`npm run start`
 
 Acesse o site atraves do link [http://localhost:3000](http://localhost:3000)
