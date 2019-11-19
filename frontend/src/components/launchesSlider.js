@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import '../App.css';
+import Card from 'react-bootstrap/Card';
 import Slider from 'react-slick';
+import '../App.css';
 
 const spacexLogo = 'https://cdn.iconscout.com/icon/free/png-256/spacex-282142.png';
 
@@ -26,22 +27,27 @@ export default class LaunchesSlider extends Component {
   };
 
   componentDidMount() {
-    fetch(`${this.props.url}?sort=${encodeURIComponent('launch_date_utc')}&order=desc`)
+    fetch(`${this.props.url}`)
       .then(res => res.json())
       .then(data => {
         console.log(JSON.parse(data));
         const info = Array.isArray(JSON.parse(data)) ? JSON.parse(data) : [JSON.parse(data)];
-        this.setState({ contacts: info });
+        return this.setState({ contacts: info });
       })
       .catch(console.log);
   }
 
   render() {
     const settings = {
+      pauseOnFocus: true,
+      pauseOnHover: true,
+      autoplay: true,
+      autoplaySpeed: 2500,
       focusOnSelect: true,
       dots: false,
+      accessibility: true,
       infinite: true,
-      speed: 400,
+      speed: 700,
       slidesToShow: 4,
       slidesToScroll: 1,
       initialSlide: 0,
@@ -49,16 +55,16 @@ export default class LaunchesSlider extends Component {
       prevArrow: <PrevArrow />,
       responsive: [
         {
-          breakpoint: 1024,
+          breakpoint: 1200,
           settings: {
             slidesToShow: 3,
             slidesToScroll: 1,
             infinite: true,
-            dots: true
+            dots: false
           }
         },
         {
-          breakpoint: 600,
+          breakpoint: 1000,
           settings: {
             slidesToShow: 2,
             slidesToScroll: 1,
@@ -66,7 +72,7 @@ export default class LaunchesSlider extends Component {
           }
         },
         {
-          breakpoint: 480,
+          breakpoint: 620,
           settings: {
             slidesToShow: 1,
             slidesToScroll: 1
@@ -77,7 +83,7 @@ export default class LaunchesSlider extends Component {
     return (
       <div
         style={{
-          width: '90%'
+          width: '85%'
         }}
       >
         <Slider {...settings}>
@@ -88,19 +94,23 @@ export default class LaunchesSlider extends Component {
                 width: this.state.width + 'px'
               }}
             >
-              <center>
-                <h4>{contact.mission_name}</h4>
-                <div>
-                  <img
-                    className='logo'
-                    src={contact.links.mission_patch_small || spacexLogo}
-                    alt={contact.mission_name}
-                  />
-                  <h6>{contact.rocket_name}</h6>
-                  <p>{new Date(contact.launch_date_local).toLocaleDateString()}</p>
-                  <p>{new Date(contact.launch_date_local).toLocaleTimeString()}</p>
-                </div>
-              </center>
+              <Card
+                style={{
+                  // width: '400px',
+                  height: '400px'
+                }}
+              >
+                <Card.Body>
+                  <Card.Title>{contact.mission_name}</Card.Title>
+                  <Card.Subtitle className='mb-2 text-muted'>Card Subtitle</Card.Subtitle>
+                  <Card.Img variant='bottom' src={contact.links.mission_patch_small || spacexLogo} />
+                  {/* <Card.Text>
+                    Some quick example text to build on the card title and make up the bulk of the card's content.
+                  </Card.Text> */}
+                  <Card.Link href='#'>Card Link</Card.Link>
+                  <Card.Link href='#'>Another Link</Card.Link>
+                </Card.Body>
+              </Card>
             </div>
           ))}
         </Slider>
