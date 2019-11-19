@@ -8,16 +8,16 @@ class App extends Component {
     return (
       <center>
         <p>Ultimo</p>
-        <LaunchesSlider url='http://127.0.0.1:8000/service/latest' />
+        <LaunchesSlider url='https://zapayapi-prod.herokuapp.com/service/latest' />
 
         <p>Proximo</p>
-        <LaunchesSlider url='http://127.0.0.1:8000/service/next' />
+        <LaunchesSlider url='https://zapayapi-prod.herokuapp.com/service/next' />
 
         <p>Anteriores</p>
-        <LaunchesSlider url='http://127.0.0.1:8000/service/past?sort=launch_date_utc&order=desc' />
+        <LaunchesSlider url='https://zapayapi-prod.herokuapp.com/service/past?sort=launch_date_utc&order=desc' />
 
         <p>Proximos</p>
-        <LaunchesSlider url='http://127.0.0.1:8000/service/upcoming?sort=launch_date_utc&order=asc' />
+        <LaunchesSlider url='https://zapayapi-prod.herokuapp.com/service/upcoming?sort=launch_date_utc&order=asc' />
       </center>
     );
   }
