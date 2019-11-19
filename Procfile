@@ -1,0 +1,1 @@
+web: gunicorn zapayApi.wsgi --log-file -
