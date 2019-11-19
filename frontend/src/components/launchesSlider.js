@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Slider from 'react-slick';
-import LauncheCard from './card';
+import LauncheCard from './launcheCard';
+
+import Spinner from 'react-bootstrap/Spinner';
 import '../App.css';
 
 const NextArrow = props => {
@@ -14,10 +16,7 @@ const PrevArrow = props => {
 };
 
 export default class LaunchesSlider extends Component {
-  state = {
-    launches: [],
-    width: 128
-  };
+  state = { launches: [] };
 
   componentDidMount() {
     fetch(`${this.props.url}`)
@@ -28,16 +27,21 @@ export default class LaunchesSlider extends Component {
       .catch(console.log);
   }
 
+  componentWillMount() {
+    return <Spinner animation='grow' />;
+  }
+
   render() {
     const settings = {
+      // lazyLoad: 'progressive',
       pauseOnFocus: true,
       pauseOnHover: true,
-      autoplay: true,
+      autoplay: false,
       autoplaySpeed: 2500,
       focusOnSelect: true,
       dots: false,
       accessibility: true,
-      infinite: true,
+      infinite: false,
       speed: 550,
       slidesToShow: 4,
       slidesToScroll: 1,
@@ -70,12 +74,33 @@ export default class LaunchesSlider extends Component {
           }
         }
       ]
+      // appendDots: dots => (
+      //   <div
+      //     style={{
+      //       borderRadius: '10px',
+      //       padding: '5px'
+      //     }}
+      //   >
+      //     <ul style={{ margin: '0px' }}> {dots} </ul>
+      //   </div>
+      // ),
+      // customPaging: i => (
+      //   <div
+      //     style={{
+      //       width: '15px',
+      //       color: 'blue',
+      //       border: '1px blue solid'
+      //     }}
+      //   >
+      //     {i + 1}
+      //   </div>
+      // )
     };
     return (
       <div style={{ width: '85%' }}>
         <Slider {...settings}>
           {this.state.launches.map(launche => (
-            <LauncheCard key={launche.flight_number} launche={launche}></LauncheCard>
+            <LauncheCard key={launche._id} launche={launche}></LauncheCard>
           ))}
         </Slider>
       </div>
