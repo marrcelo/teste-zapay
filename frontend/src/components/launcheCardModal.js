@@ -48,6 +48,11 @@ const LauncheCardModal = ({ launche }) => {
               <strong>Video: </strong> <a href={launche.links.video_link}> Video </a>
             </p>
           )}
+          {launche.details && (
+            <p>
+              <strong>Detalhes: </strong> {launche.details}
+            </p>
+          )}
         </Modal.Body>
       </Modal>
     </>
