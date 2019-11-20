@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Spinner from 'react-bootstrap/Spinner';
 import Slider from 'react-slick';
 import '../App.css';
 import LauncheCard from './launcheCard';
@@ -14,16 +15,18 @@ const PrevArrow = props => {
 };
 
 export default class LaunchesSlider extends Component {
-  state = { launches: [], requestFailed: false };
+  state = { launches: [], requestFailed: false, isLoading: false };
 
   componentDidMount() {
+    this.setState({ isLoading: true });
+
     fetch(`${this.props.url}`)
       .then(res => res.json())
       .then(data => {
         try {
-          return this.setState({ launches: JSON.parse(data), requestFailed: false });
+          return this.setState({ launches: JSON.parse(data), requestFailed: false, isLoading: false });
         } catch (error) {
-          this.setState({ requestFailed: true });
+          this.setState({ requestFailed: true, isLoading: false });
         }
       })
       .catch(console.error);
@@ -72,8 +75,16 @@ export default class LaunchesSlider extends Component {
         }
       ]
     };
-    const { requestFailed } = this.state;
-    if (requestFailed) {
+    const { isLoading, requestFailed } = this.state;
+    if (isLoading) {
+      return (
+        <>
+          <Spinner animation='grow' />
+          <Spinner animation='grow' />
+          <Spinner animation='grow' />
+        </>
+      );
+    } else if (requestFailed) {
       return (
         <div>
           <p>Opss.. Aconteceu algum problema :(</p>
