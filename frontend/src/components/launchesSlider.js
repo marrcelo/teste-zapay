@@ -43,27 +43,45 @@ export default class LaunchesSlider extends Component {
       accessibility: true,
       infinite: false,
       speed: 550,
-      slidesToShow: 4,
+      slidesToShow: 7,
       slidesToScroll: 1,
       initialSlide: 0,
       nextArrow: <NextArrow />,
       prevArrow: <PrevArrow />,
       responsive: [
         {
+          breakpoint: 2450,
+          settings: {
+            slidesToShow: 6,
+            slidesToScroll: 1
+          }
+        },
+        {
+          breakpoint: 2100,
+          settings: {
+            slidesToShow: 5,
+            slidesToScroll: 1
+          }
+        },
+        {
+          breakpoint: 1700,
+          settings: {
+            slidesToShow: 4,
+            slidesToScroll: 1
+          }
+        },
+        {
           breakpoint: 1200,
           settings: {
             slidesToShow: 3,
-            slidesToScroll: 1,
-            infinite: true,
-            dots: false
+            slidesToScroll: 1
           }
         },
         {
           breakpoint: 1000,
           settings: {
             slidesToShow: 2,
-            slidesToScroll: 1,
-            initialSlide: 0
+            slidesToScroll: 1
           }
         },
         {
