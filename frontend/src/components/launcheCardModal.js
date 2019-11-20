@@ -21,35 +21,34 @@ const LauncheCardModal = ({ launche }) => {
           <Modal.Title>{launche.mission_name}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <p>Nome do foguete: {launche.rocket && launche.rocket.rocket_name}</p>
-          <p>Tipo do foguete: {launche.rocket && launche.rocket.rocket_type}</p>
           <p>
-            Data de lançamento:{' '}
+            <strong>Nome do foguete: </strong> {launche.rocket && launche.rocket.rocket_name}
+          </p>
+          <p>
+            <strong>Tipo do foguete: </strong> {launche.rocket && launche.rocket.rocket_type}
+          </p>
+          <p>
+            <strong>Data de lançamento: </strong>
             {dayjs(launche.launch_date_utc)
               .locale('pt-br')
               .format('D MMMM YYYY, HH:mm')}
           </p>
           {launche.links && launche.links.article_link && (
             <p>
-              Artigo: <a href={launche.links.article_link}> Link </a>
+              <strong>Artigo:</strong> <a href={launche.links.article_link}> Link </a>
             </p>
           )}
           {launche.links && launche.links.wikipedia && (
             <p>
-              Wikipedia: <a href={launche.links.wikipedia}> Wikipedia </a>
+              <strong>Wikipedia:</strong> <a href={launche.links.wikipedia}> Wikipedia </a>
             </p>
           )}
           {launche.links && launche.links.video_link && (
             <p>
-              Video: <a href={launche.links.video_link}> Video </a>
+              <strong>Video: </strong> <a href={launche.links.video_link}> Video </a>
             </p>
           )}
         </Modal.Body>
-        <Modal.Footer>
-          <Button variant='secondary' onClick={handleClose}>
-            Close
-          </Button>
-        </Modal.Footer>
       </Modal>
     </>
   );
